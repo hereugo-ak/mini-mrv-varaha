@@ -1,0 +1,10 @@
+# python==3.11
+pandas==3.0.5
+numpy==2.4.6
+geopandas==1.1.4
+rasterio==1.4.4
+matplotlib==3.11.1
+streamlit==1.62.0
+fpdf2==2.8.8
+scipy==1.17.1
+pyogrio==0.13.0

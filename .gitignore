@@ -1,0 +1,16 @@
+# Mini-MRV .gitignore
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+data/raw/*.tif
+data/raw/*.nc
+data/cache/
+*.tif
+*.nc
+.DS_Store
+.streamlit/
+reports/*.pdf
+!reports/Mini_MRV_Report_VM0042.pdf
+!reports/.gitkeep
