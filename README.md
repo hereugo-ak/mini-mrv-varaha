@@ -1,15 +1,4 @@
-# Mini-MRV: Soil Carbon Sequestration Estimator — Indo-Gangetic Wheat Systems
-
-> **Varaha showcase** — Intern, Junior Carbon & GHG Modeler | Verra VM0042-aligned prototype
-> **Author:** MD Abuzar Salim — B.Sc (Hons) Agriculture (Top 5%) + MBA International Business, AMU
-> **Live Demo:** Run locally `streamlit run src/04_streamlit_app.py` | **Report:** `reports/Mini_MRV_Report_VM0042.pdf`
-> Built with AI-assisted geospatial debugging (rasterio /vsicurl window)
-
-Mirrors Varaha's MRV workflow at district scale: real SoilGrids SOC + NDVI proxy + climate modifiers → RothC-lite (not DayCent) → Verra-style scenarios → Monte Carlo uncertainty (VMD0053) → dashboard + PDF.
-
-**HR:** careers@varahaag.com | **Job:** https://www.linkedin.com/jobs/view/4448196584
-
----
+# Mini-MRV: Soil Carbon Sequestration Estimator — Indo-Gangetic Wheat System
 
 ## 1. Run in 3 commands
 
@@ -75,27 +64,5 @@ Core equation (RothC simplified):
 
 See `PRODUCT_DESCRIPTION.md` for full science writeup.
 
-## 4. Verra alignment
 
-| VM0042 | Prototype |
-|---|---|
-| Project boundary | 2 districts, 250m pixels |
-| Baseline vs project | CT_burn vs ZT_retain / ZT_FYM |
-| Quantification | delta SOC * 44/12 |
-| Uncertainty VMD0053 | Monte Carlo, deduction if CI width > 50% mean |
 
-## 5. Tech that matches the JD
-
-Python production + Git, GeoPandas + Rasterio, statistical modeling + uncertainty, remote sensing, Bayesian, ag systems India.
-
-## 6. Limitations (stated honestly)
-
-No field SOC calibration, so absolute numbers are illustrative, incremental deltas are the valid signal. Omits N2O term that DayCent includes. NDVI is a mock proxy (real: Planetary Computer STAC). Climate modifiers are mock (real: ERA5 CDS, needs key). Full DayCent would need soil horizons and daily weather.
-
-## 7. Next steps after showcase
-
-Calibrate with field SOC, add N2O module, train ML surrogate for speed, scale to all Punjab/Haryana via pipeline.
-
----
-
-**Build log:** Weekend sprint, Aug 2025.
