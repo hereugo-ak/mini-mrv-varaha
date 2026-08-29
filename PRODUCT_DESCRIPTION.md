@@ -4,7 +4,7 @@
 
 Mini-MRV is a prototype of Varaha's soil carbon MRV pipeline for Indo-Gangetic wheat systems. It fetches real SoilGrids SOC data, runs a simplified RothC carbon balance model across three management scenarios, quantifies uncertainty via Monte Carlo (VMD0053), and produces a Verra-aligned PDF report.
 
-**Study area:** Ludhiana (Punjab) and Karnal (Haryana) — intensive rice-wheat belt with residue burning as the baseline problem.
+**Study area:** Ludhiana (Punjab) and Karnal (Haryana) intensive rice-wheat belt with residue burning as the baseline problem.
 
 ## 2. Carbon Balance Equation
 
