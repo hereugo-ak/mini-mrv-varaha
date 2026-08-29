@@ -1,0 +1,7 @@
+district,scenario,mean_tco2e,sd,p5,p25,p75,p95,width_p90,deduction_triggered,conservative_tco2e
+Karnal,CT_burn,-2.641,0.447,-3.348,-2.949,-2.339,-1.874,1.474,True,-3.348
+Karnal,ZT_FYM,-0.194,0.577,-1.098,-0.605,0.221,0.774,1.871,True,-1.098
+Karnal,ZT_retain,-1.399,0.427,-2.109,-1.702,-1.107,-0.697,1.411,True,-2.109
+Ludhiana,CT_burn,-2.771,0.419,-3.436,-3.061,-2.489,-2.043,1.393,True,-3.436
+Ludhiana,ZT_FYM,-0.377,0.54,-1.21,-0.745,-0.048,0.537,1.747,True,-1.21
+Ludhiana,ZT_retain,-1.521,0.382,-2.152,-1.768,-1.266,-0.859,1.293,True,-2.152
