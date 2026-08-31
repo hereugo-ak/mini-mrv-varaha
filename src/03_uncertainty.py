@@ -1,5 +1,5 @@
-# 03_uncertainty.py — Monte Carlo uncertainty per VMD0053
-# Prior k ~ Normal(0.032, 0.006) — production would be PyMC posterior from field SOC
+# 03_uncertainty.py: Monte Carlo uncertainty per VMD0053
+# Prior k ~ Normal(0.032, 0.006): production would be PyMC posterior from field SOC
 # Runs 1000 jittered runs per district-scenario, computes 90% CI and conservative deduction.
 #
 # Production Bayesian version (PyMC) would replace the np.random.normal draws with:

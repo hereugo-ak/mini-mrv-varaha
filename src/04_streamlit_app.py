@@ -1,4 +1,4 @@
-# 04_streamlit_app.py — dashboard for Mini-MRV
+# 04_streamlit_app.py: dashboard for Mini-MRV
 # Shows scenario bars, Monte Carlo histograms, Verra alignment, CSV download.
 # Run: streamlit run src/04_streamlit_app.py
 import pathlib
@@ -11,7 +11,7 @@ PROC = ROOT / "data" / "processed"
 
 st.set_page_config(page_title="Mini-MRV", layout="wide", initial_sidebar_state="expanded")
 
-st.title("Mini-MRV: Soil Carbon — Indo-Gangetic Wheat Systems")
+st.title("Mini-MRV: Soil Carbon: Indo-Gangetic Wheat Systems")
 st.caption("RothC-lite (not DayCent)  •  Verra VM0042 / VMD0053  •  Ludhiana + Karnal")
 
 
@@ -44,7 +44,7 @@ kpi = inc.groupby("district")["incremental_tco2e_vs_baseline"].mean().round(2)
 cols = st.columns(3)
 for i, (d, v) in enumerate(kpi.items()):
     with cols[i % 3]:
-        st.metric(label=f"{d} — {scenario}", value=f"{v} tCO2e/ha/yr", delta="vs CT_burn baseline")
+        st.metric(label=f"{d}: {scenario}", value=f"{v} tCO2e/ha/yr", delta="vs CT_burn baseline")
 
 tab1, tab2, tab3 = st.tabs(["📊 Results", "🔬 Uncertainty", "📄 Verra"])
 
@@ -72,7 +72,7 @@ with tab2:
         for d in sel["district"].unique():
             ax2.hist(sel[sel["district"] == d]["tco2e_draw"], bins=20, alpha=0.5, label=d)
         ax2.set_xlabel("tCO2e / ha / yr"); ax2.set_ylabel("count")
-        ax2.legend(); ax2.set_title(f"Uncertainty — {scenario}")
+        ax2.legend(); ax2.set_title(f"Uncertainty: {scenario}")
         st.pyplot(fig2, use_container_width=True)
         st.caption("VMD0053: if 90% CI width > 50% of |mean|, use 5th percentile as conservative credit.")
     st.dataframe(unc[unc["scenario"] == scenario], use_container_width=True, hide_index=True)

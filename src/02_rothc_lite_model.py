@@ -1,4 +1,4 @@
-# 02_rothc_lite_model.py — RothC-lite proxy, NOT DayCent.
+# 02_rothc_lite_model.py: RothC-lite proxy, NOT DayCent.
 # Real DayCent needs soil horizons + daily weather + calibration with field SOC.
 # SOC(t+1) = SOC(t) + C_input*h - k*SOC(t)*f_temp*f_moist*f_till
 # Runs monthly for 20 years per pixel, per scenario.
@@ -10,7 +10,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 PROC = ROOT / "data" / "processed"
 RAW = ROOT / "data" / "raw"
 
-# humification fraction and decomposition params — texture dependent, from literature
+# humification fraction and decomposition params: texture dependent, from literature
 PARAMS = {
     "h_burn": 0.12,       # burned residue leaves little humus
     "h_retain": 0.20,     # wheat straw
@@ -71,7 +71,7 @@ def main():
             })
     df = pd.DataFrame(rows)
 
-    # incremental tco2e vs baseline (CT_burn) — this is the actual credit
+    # incremental tco2e vs baseline (CT_burn): this is the actual credit
     baseline = df[df["scenario"] == "CT_burn"][["pixel_id", "tco2e_per_ha_per_year"]].rename(
         columns={"tco2e_per_ha_per_year": "baseline_tco2e"}
     )

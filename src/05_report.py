@@ -1,4 +1,4 @@
-# 05_report.py — 1-page MVR-style PDF (Verra VM0042 summary)
+# 05_report.py: 1-page MVR-style PDF (Verra VM0042 summary)
 # Run: python src/05_report.py
 import pathlib
 from fpdf import FPDF

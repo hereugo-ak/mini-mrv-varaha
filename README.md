@@ -1,4 +1,4 @@
-# Mini-MRV: Soil Carbon Sequestration Estimator — Indo-Gangetic Wheat System
+# Mini-MRV: Soil Carbon Sequestration Estimator - Indo-Gangetic Wheat System
 
 ## 1. Run in 3 commands
 
@@ -32,15 +32,15 @@ Sample outputs are committed in `data/` and `reports/` so you can review without
 | Ludhiana | CT_burn | 30.0 | 15.1 | -2.73 | 0.00 |
 | Ludhiana | ZT_retain | 30.0 | 21.3 | -1.60 | +1.13 |
 
-`incremental_tco2e_vs_baseline` is the credit signal — positive means the project practice sequesters more carbon than the CT_burn baseline.
+`incremental_tco2e_vs_baseline` is the credit signal: positive means the project practice sequesters more carbon than the CT_burn baseline.
 
 ## 2. What it does
 
-**Study area:** Ludhiana (Punjab) and Karnal (Haryana) — Indo-Gangetic rice-wheat belt you know from field work.
+**Study area:** Ludhiana (Punjab) and Karnal (Haryana), Indo-Gangetic rice-wheat belt you know from field work.
 
 **Scenarios (Verra VM0042 style):**
 
-- **Baseline:** Conventional tillage + residue burning (CT_burn) — low C input, high decomposition
+- **Baseline:** Conventional tillage + residue burning (CT_burn), low C input, high decomposition
 - **Project 1:** Zero-till + residue retention (ZT_retain)
 - **Project 2:** Zero-till + residue + Farm Yard Manure (ZT_FYM)
 
@@ -50,8 +50,8 @@ Delta SOC between project and baseline → tCO2e = delta SOC * 3.67, reported as
 
 ```
 SoilGrids 250m SOC 0-30cm (ISRIC WebDAV) ─┐
-NDVI proxy (mock — real: Planetary Computer)─┼─> 01_fetch_inputs.py ─> data/raw/
-Climate modifiers (mock — real: ERA5 CDS) ──┘
+NDVI proxy (mock, real: Planetary Computer)─┼─> 01_fetch_inputs.py ─> data/raw/
+Climate modifiers (mock, real: ERA5 CDS) ──┘
 
                      ─> 02_rothc_lite_model.py (RothC-lite, not DayCent)
                      ─> 03_uncertainty.py (Monte Carlo, prior on k)

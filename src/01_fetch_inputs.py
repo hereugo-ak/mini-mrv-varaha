@@ -1,7 +1,7 @@
-# 01_fetch_inputs.py — fetch SoilGrids SOC (real) + NDVI proxy (mock) for Ludhiana & Karnal
+# 01_fetch_inputs.py: fetch SoilGrids SOC (real) + NDVI proxy (mock) for Ludhiana & Karnal
 # SOC: ISRIC WebDAV via rasterio /vsicurl (250m OCS 0-30cm, Homolosine projection)
-# NDVI: mock per-pixel — real would be Planetary Computer STAC median composite
-# Climate: mock monthly modifiers — real would be ERA5 via CDS API (needs key)
+# NDVI: mock per-pixel, real would be Planetary Computer STAC median composite
+# Climate: mock monthly modifiers, real would be ERA5 via CDS API (needs key)
 import pathlib
 import numpy as np
 import pandas as pd
@@ -38,7 +38,7 @@ def make_districts():
         gdf.to_file(out, driver="GPKG")
         print(f"Saved {out} ({len(gdf)} districts)")
     except Exception as e:
-        # GDAL/pyogrio missing — fall back to WKT csv
+        # GDAL/pyogrio missing: fall back to WKT csv
         gdf["wkt"] = gdf.geometry.apply(lambda g: g.wkt)
         gdf.drop(columns=["geometry"]).to_csv(RAW / "districts.csv", index=False)
         print(f"GPKG failed ({e}), saved districts.csv")
@@ -51,14 +51,14 @@ def fetch_soc(gdf, pixels_per_district=PIXELS_PER_DISTRICT):
     with rasterio.open(SOILGRIDS_URL) as ds:
         for _, row in gdf.iterrows():
             xmin, ymin, xmax, ymax = row.geometry.bounds
-            # bbox is WGS84 but the VRT is in Homolosine — transform before windowing
+            # bbox is WGS84 but the VRT is in Homolosine: transform before windowing
             l, b, r, t = transform_bounds('EPSG:4326', ds.crs, xmin, ymin, xmax, ymax)
             win = from_bounds(l, b, r, t, ds.transform)
             data = ds.read(1, window=win)
             wt = ds.window_transform(win)
             valid = data != ds.nodata
             stride = max(1, int(np.sqrt(valid.sum() / pixels_per_district)))
-            # 2D systematic sampling — every stride-th row/col
+            # 2D systematic sampling: every stride-th row/col
             s_rows, s_cols = np.where(valid[::stride, ::stride])
             s_rows *= stride
             s_cols *= stride
@@ -80,7 +80,7 @@ def fetch_soc(gdf, pixels_per_district=PIXELS_PER_DISTRICT):
 
 
 def calc_c_inputs(soc_df):
-    # NDVI proxy for wheat biomass — real would be Planetary Computer STAC median
+    # NDVI proxy for wheat biomass: real would be Planetary Computer STAC median
     np.random.seed(7)
     ndvi = np.clip(np.random.normal(0.52, 0.08, len(soc_df)), 0.30, 0.75)
     soc_df = soc_df.copy()
@@ -101,7 +101,7 @@ def calc_c_inputs(soc_df):
 
 
 def make_climate():
-    # monthly temp/moisture modifiers for Indo-Gangetic plain — real would be ERA5 via CDS API
+    # monthly temp/moisture modifiers for Indo-Gangetic plain: real would be ERA5 via CDS API
     months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
     f_temp = [0.7,0.75,0.9,1.1,1.4,1.6,1.55,1.45,1.2,0.95,0.8,0.72]
     f_moist = [0.6,0.55,0.6,0.5,0.45,0.85,1.3,1.25,0.9,0.6,0.55,0.6]
